@@ -1,0 +1,42 @@
+
+let data = "appjhhle";
+let regex = "*le";
+
+//////// 1. yöntem /////////////
+let s = data;
+let p = regex;
+let pIndex = 0;
+let sonuc = true;
+for (let i = 0; i < array.length; i++) {
+  if (s[i] == p[pIndex]) {
+    pIndex += 1;
+  } else if (p[pIndex] == "?") {
+    pIndex += 1;
+  }else if (p[pIndex]=="*" && s[i]==p[pIndex]) {
+pIndex+=2;    
+  }else if (p[pIndex]=="*") {
+     }else{sonuc=false;}
+}
+if (p.length>pIndex)sonuc=false;
+console.log("1.yöntem =" +sonuc)
+/* return sonuc; */
+
+//////// 2. yöntem /////////////
+let rIndex = 0;
+let son = true;
+for (let index = 0; index < data.length; index++) {
+  if (regex[rIndex] == data[index]) {
+    rIndex++;
+  } else if (regex[rIndex] == "?") {
+    rIndex++;
+  } else if (regex[rIndex] == "*") {
+    if (regex[rIndex + 1] == "?" || regex[rIndex + 1] == data[index + 1]) {
+      rIndex++;
+    }
+  } else {
+    son = false;
+    break;
+  }
+}
+console.log("2.yöntem =" + son);
+/* return son; */
